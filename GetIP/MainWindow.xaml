@@ -1,0 +1,17 @@
+﻿<Window x:Class="GetIP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GetIP"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Background="#FF555555">
+        <Label>IP Spy</Label>
+        <TextBox HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200" Height="40">
+            <TextBox.Effect>
+                <DropShadowEffect BlurRadius="10" Direction="360" Opacity="0.25"/>
+            </TextBox.Effect>
+        </TextBox>
+    </Grid>
+</Window>
