@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,24 @@ namespace GetIP
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<IP> ip = new List<IP>();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void getid_btn_Click(object sender, RoutedEventArgs e)
+        {
+             Getip();
+        }
+        private async Task Getip()
+        {
+            IpGet webClient = new IpGet();
+            ip = await webClient.GetCurrentIP();
+            foreach(IP i in ip)
+            {
+                Result.Text = i.Ipv4;
+            }
         }
     }
 }
