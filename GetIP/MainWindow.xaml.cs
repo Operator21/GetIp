@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,7 +22,8 @@ namespace GetIP
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<IP> ip = new List<IP>();
+        List<IP> ips = new List<IP>();
+        IP i = new IP();
         public MainWindow()
         {
             InitializeComponent();
@@ -29,16 +31,19 @@ namespace GetIP
 
         private void getid_btn_Click(object sender, RoutedEventArgs e)
         {
-             Getip();
+            Getip();
         }
         private async Task Getip()
         {
-            IpGet webClient = new IpGet();
+            /*IpGet webClient = new IpGet();
             ip = await webClient.GetCurrentIP();
-            foreach(IP i in ip)
-            {
-                Result.Text = i.Ipv4;
-            }
+            */
+            var httpClient = new HttpClient();
+            //var ip = await httpClient.GetStringAsync("https://api.ipify.org");
+            var ip = await httpClient.GetStringAsync("https://api.ipify.org?format=json");
+            IParser parser = new JsonParser();
+            i = await parser.ParseString<IP>(ip);
+            Result.Text = i.ip;
         }
     }
 }

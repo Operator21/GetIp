@@ -11,7 +11,7 @@ namespace GetIP
     {
         public async Task<List<IP>> GetCurrentIP()
         {
-            string url = "https://stackoverflow.com/questions/15683858/restsharp-print-raw-request-and-response-headers";
+            string url = "https://api.ipify.org?format=json";
             var client = new RestClient(url);
             // client.Authenticator = new HttpBasicAuthenticator(username, password);
 
@@ -25,8 +25,7 @@ namespace GetIP
             Console.WriteLine(response.Content);
 
             IParser parser = new JsonParser();
-            await parser.ParseString<List<IP>>(response.Content);
-            return null;
+            return await parser.ParseString<List<IP>>(response.Content);
 
         }
     }

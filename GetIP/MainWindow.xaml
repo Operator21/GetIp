@@ -7,11 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid Background="#FF555555">
-        <Label>IP Spy</Label>
+        <Label HorizontalAlignment="Center" Margin="0,30,0,0" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="24" Foreground="White">IP Spy</Label>
         <TextBox x:Name="Result" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="200" Height="40">
-            <TextBox.Effect>
-                <DropShadowEffect BlurRadius="10" Direction="360" Opacity="0.25"/>
-            </TextBox.Effect>
         </TextBox>
         <Button x:Name="getid_btn" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,100,0,0" Width="100" Height="40" Click="getid_btn_Click">GIMME IP</Button>
     </Grid>

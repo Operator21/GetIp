@@ -8,6 +8,6 @@ namespace GetIP
 {
     public class IP
     {
-        public string Ipv4 { get; set; }
+        public string ip { get; set; }
     }
 }
