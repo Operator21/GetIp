@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -22,6 +23,7 @@ namespace GetIP
     /// </summary>
     public partial class MainWindow : Window
     {
+        static HttpClient httpClient = new HttpClient();
         List<IP> ips = new List<IP>();
         IP i = new IP();
         public MainWindow()
@@ -38,11 +40,13 @@ namespace GetIP
             /*IpGet webClient = new IpGet();
             ip = await webClient.GetCurrentIP();
             */
-            var httpClient = new HttpClient();
+            
             //var ip = await httpClient.GetStringAsync("https://api.ipify.org");
             var ip = await httpClient.GetStringAsync("https://api.ipify.org?format=json");
+            Debug.WriteLine(ip);
             IParser parser = new JsonParser();
             i = await parser.ParseString<IP>(ip);
+            Debug.WriteLine(i.ip);
             Result.Text = i.ip;
         }
     }
